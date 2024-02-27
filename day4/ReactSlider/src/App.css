@@ -43,6 +43,7 @@ body {
   border-radius: 12px;
 }
 
+
 .swiper-slide:nth-child(1n) {
   background-color: rgb(206, 17, 17);
 }

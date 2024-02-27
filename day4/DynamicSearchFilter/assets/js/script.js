@@ -1,0 +1,54 @@
+const books = [
+  {
+    id: 1,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+  },
+  { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960 },
+  { id: 3, title: "1984", author: "George Orwell", year: 1949 },
+  
+];
+
+const searchInput = document.getElementById("searchInput");
+const booksList = document.getElementById("booksList");
+
+const displayBooks = (books) => {
+  booksList.innerHTML = "";
+  books.forEach((book) => {
+    booksList.innerHTML += `<li>${book.title} author ${book.author} (${book.year})</li>`;
+  });
+};
+
+const searchAndHighlight = (value) => {
+  const matchingBooks = books.filter(({ title, author }) => {
+    return (
+      title.toLowerCase().includes(value.toLowerCase()) ||
+      author.toLowerCase().includes(value.toLowerCase())
+    );
+  });
+
+  displayBooks(matchingBooks);
+
+  if (matchingBooks.length === 0) {
+    return (booksList.innerHTML = "<li>No books found</li>");
+  }
+  const listItems = booksList.getElementsByTagName("li");
+  for (let i = 0; i < listItems.length; i++) {
+    const bookTitle = listItems[i].innerText.split(" author ")[0];
+    const bookAuthor = listItems[i].innerText.split(" author ")[1];
+    const regex = new RegExp(`(${value})`, "gi");
+    const title = bookTitle.replace(regex, "<span class='highlight'>$1</span>");
+    const author = bookAuthor.replace(
+      regex,
+      "<span class='highlight'>$1</span>"
+    );
+    listItems[i].innerHTML = `${title} author ${author}`;
+  }
+};
+
+searchInput.addEventListener("input", (event) => {
+  searchAndHighlight(event.target.value);
+});
+
+displayBooks(books);
