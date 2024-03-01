@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // "@/*": [
+      //   "./src/*",
+      //   "./dist/*",
+      //   ""
+      // ],
+      "app/*": [
+        "./src/app/*"
+      ],
+      "assets/*": [
+        "./src/assets/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "config/*": [
+        "./src/config/*"
+      ],
+      "constant/*": [
+        "./src/constant/*"
+      ],
+      "layout/*": [
+        "./src/layout/*"
+      ],
+      "pages/*": [
+        "./src/pages/*"
+      ],
+      "router/*": [
+        "./src/router/*"
+      ],
+      "services/*": [
+        "./src/services/*"
+      ],
+      "utils/*": [
+        "./src/utils/*"
+      ],
+      "hooks/*": [
+        "./src/hooks/*"
+      ],
+      "public/*": [
+        "./public/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "src/pages/Register/Register.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}
